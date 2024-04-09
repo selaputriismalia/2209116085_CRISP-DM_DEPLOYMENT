@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 
 st.title('Anime Rating Analysis & Recommender System')
 
-url = "Data_CLeaned.csv"
+url = "Data_Cleaned.csv"
 df = pd.read_csv(url)
 
 st.subheader("Dataset")
