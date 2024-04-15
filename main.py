@@ -68,6 +68,8 @@ st.write(genre_percentages.apply(lambda x: '{:.2f}%'.format(x)))
 st.write('Dari data persentase genre anime di atas, dapat diamati bahwa genre Comedy mendominasi sebagai genre paling populer dengan persentase sebesar 11.77%, diikuti oleh Action dengan 8.57%, dan Drama dengan 7.06%. Hal ini menunjukkan bahwa anime dengan elemen komedi cenderung lebih diminati oleh penonton dibandingkan dengan genre lainnya. Action dan Drama juga merupakan genre yang cukup diminati, menunjukkan minat yang besar dari penonton terhadap cerita dengan adegan aksi dan dramatis. Di sisi lain, genre seperti Shounen, Adventure, dan Romance juga memiliki persentase yang signifikan, menunjukkan popularitas yang konsisten di kalangan penggemar anime.')
 st.write("Dari segi actionable insight, produsen anime dapat mempertimbangkan untuk mengembangkan lebih banyak konten dengan genre Comedy, Action, dan Drama untuk menarik minat penonton yang lebih luas. Namun, mereka juga tidak boleh mengabaikan genre lain yang memiliki persentase yang signifikan, seperti Adventure, Romance, dan Fantasy. Dengan memahami preferensi genre yang diminati oleh penonton, produsen anime dapat mengalokasikan sumber daya secara efektif untuk menghasilkan konten yang lebih sesuai dengan selera pasar, sehingga meningkatkan daya saing dan penerimaan di industri anime. Selain itu, mereka juga dapat menggunakan informasi ini untuk merancang strategi pemasaran yang lebih efektif dan mengoptimalkan promosi untuk mencapai target audiens dengan lebih baik.")
 
+
+st.subheader("Jumlah Anime berdasarkan Media:")
 media_types = ['Movie', 'Music', 'ONA', 'OVA', 'Special', 'TV']
 media_counts = df[media_types].sum().sort_values(ascending=False)
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -80,7 +82,7 @@ st.pyplot(fig)
 
 total_anime = len(df)
 
-st.subheader("Jumlah Anime berdasarkan Media:")
+
 media_percentages = (media_counts / total_anime) * 100
 st.write("Jumlah Anime berdasarkan Media:")
 st.write(media_percentages)
