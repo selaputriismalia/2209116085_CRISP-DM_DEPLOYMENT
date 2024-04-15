@@ -42,13 +42,21 @@ st.write("Produsen anime dapat menggunakan wawasan ini untuk memahami preferensi
 
 st.subheader('Jumlah Anime Berdasarkan Genre')
 genres = df.columns[1:-7]
+genres = df.columns[1:-7]
 genre_counts = df[genres].sum().sort_values(ascending=False)
+top_genres = genre_counts.head(10)
+
+# Buat plot
 fig, ax = plt.subplots(figsize=(10, 6))
-genre_counts.plot(kind='bar', color='green', ax=ax)
-ax.set_title('Jumlah Anime Berdasarkan Genre')
+top_genres.plot(kind='bar', color='green', ax=ax)
+
+# Atur judul dan label sumbu
+ax.set_title('10 Genre Anime Terpopuler')
 ax.set_xlabel('Genre')
 ax.set_ylabel('Jumlah Anime')
-ax.set_xticklabels(genre_counts.index, rotation=45)
+ax.set_xticklabels(top_genres.index, rotation=45)
+
+# Tampilkan plot menggunakan Streamlit
 st.pyplot(fig)
 total_anime = genre_counts.sum()
 genre_percentages = genre_counts / total_anime * 100
