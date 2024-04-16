@@ -113,6 +113,20 @@ st.sidebar.header('Select Number of Clusters')
 n_clusters = st.sidebar.slider('Jumlah Cluster', min_value=2, max_value=10, value=2, step=1)
 
 
+# Sidebar untuk menampilkan anime dengan rating tertinggi
+st.sidebar.header('Anime dengan Rating Tertinggi')
+
+# Ambil anime dengan rating tertinggi
+highest_rated_anime = df[df['rating'] == df['rating'].max()]
+
+# Tampilkan judul dan deskripsi anime dengan rating tertinggi di sidebar
+if not highest_rated_anime.empty:
+    for index, row in highest_rated_anime.iterrows():
+        st.sidebar.subheader(row['judul'])
+        st.sidebar.write(row['deskripsi'])
+else:
+    st.sidebar.write('Tidak ada data untuk anime dengan rating tertinggi.')
+
 
 
 # Load data
