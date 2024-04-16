@@ -117,27 +117,20 @@ st.sidebar.header('Pilihan Tampilan')
 jumlah_tampilan = st.sidebar.selectbox('Jumlah Anime:', [5, 10, 15])
 
 st.subheader('Anime dengan Rating Tertinggi')
-highest_rated_anime = df.nlargest(jumlah_tampilan, 'rating')
+highest_rated_anime = df.nlargest(jumlah_tampilan, 'rating')[['anime_id', 'rating']]
 
 if not highest_rated_anime.empty:
-    highest_rated_anime_table = highest_rated_anime[['anime_id', 'rating']]
-    highest_rated_anime_table['rating'] = highest_rated_anime_table['rating'].round(2) # Bulatkan rating menjadi dua desimal
-    st.table(highest_rated_anime_table)
+    st.table(highest_rated_anime)
 else:
     st.write('Tidak ada data untuk anime dengan rating tertinggi.')
 
 st.subheader('Anime dengan Rating Terendah')
-lowest_rated_anime = df.nsmallest(jumlah_tampilan, 'rating')
+lowest_rated_anime = df.nsmallest(jumlah_tampilan, 'rating')[['anime_id', 'rating']]
 
 if not lowest_rated_anime.empty:
-    lowest_rated_anime_table = lowest_rated_anime[['anime_id', 'rating']]
-    lowest_rated_anime_table['rating'] = lowest_rated_anime_table['rating'].round(2) # Bulatkan rating menjadi dua desimal
-    st.table(lowest_rated_anime_table)
+    st.table(lowest_rated_anime)
 else:
     st.write('Tidak ada data untuk anime dengan rating terendah.')
-
-
-
 
 # Load data
 file_path = 'Data_Cleaned.csv'
