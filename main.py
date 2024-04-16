@@ -118,7 +118,7 @@ st.sidebar.header('Anime dengan Rating Tertinggi')
 top_ratings_count = st.sidebar.slider('Jumlah Anime', min_value=5, max_value=20, value=10, step=1)
 
 # Mengambil data anime dengan rating tertinggi
-top_rated_anime = df.sort_values(by='rating', ascending=False).head(top_ratings_count)
+top_rated_anime = data.sort_values(by='rating', ascending=False).head(top_ratings_count)
 
 # Menampilkan data di sidebar
 st.sidebar.subheader('Anime dengan Rating Tertinggi:')
