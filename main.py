@@ -121,7 +121,8 @@ top_rated_anime = df.sort_values(by='rating', ascending=False).head(top_ratings_
 
 # Menampilkan data di sidebar
 st.sidebar.subheader('Anime dengan Rating Tertinggi:')
-st.sidebar.write(top_rated_anime[['Title', 'rating']])
+for index, row in top_rated_anime.iterrows():
+    st.sidebar.write(f"{row['Title']} - Rating: {row['rating']}")
 
 # Load data
 file_path = 'Data_Cleaned.csv'
