@@ -113,7 +113,6 @@ st.sidebar.header('Select Number of Clusters')
 n_clusters = st.sidebar.slider('Jumlah Cluster', min_value=2, max_value=10, value=2, step=1)
 
 
-
 st.sidebar.header('Pilihan Tampilan')
 jumlah_tampilan = st.sidebar.selectbox('Jumlah Anime:', [5, 10, 15])
 
@@ -122,6 +121,7 @@ highest_rated_anime = df.nlargest(jumlah_tampilan, 'rating')
 
 if not highest_rated_anime.empty:
     highest_rated_anime_table = highest_rated_anime[['anime_id', 'rating']]
+    highest_rated_anime_table['rating'] = highest_rated_anime_table['rating'].round(2) # Bulatkan rating menjadi dua desimal
     st.table(highest_rated_anime_table)
 else:
     st.write('Tidak ada data untuk anime dengan rating tertinggi.')
@@ -131,9 +131,13 @@ lowest_rated_anime = df.nsmallest(jumlah_tampilan, 'rating')
 
 if not lowest_rated_anime.empty:
     lowest_rated_anime_table = lowest_rated_anime[['anime_id', 'rating']]
+    lowest_rated_anime_table['rating'] = lowest_rated_anime_table['rating'].round(2) # Bulatkan rating menjadi dua desimal
     st.table(lowest_rated_anime_table)
 else:
     st.write('Tidak ada data untuk anime dengan rating terendah.')
+
+
+
 
 # Load data
 file_path = 'Data_Cleaned.csv'
