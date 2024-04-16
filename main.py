@@ -112,6 +112,17 @@ def perform_clustering(data, n_clusters):
 st.sidebar.header('Select Number of Clusters')
 n_clusters = st.sidebar.slider('Jumlah Cluster', min_value=2, max_value=10, value=2, step=1)
 
+# Sidebar untuk memilih jumlah anime dengan rating tertinggi
+st.sidebar.header('Anime dengan Rating Tertinggi')
+top_ratings_count = st.sidebar.slider('Jumlah Anime', min_value=5, max_value=20, value=10, step=1)
+
+# Mengambil data anime dengan rating tertinggi
+top_rated_anime = df.sort_values(by='rating', ascending=False).head(top_ratings_count)
+
+# Menampilkan data di sidebar
+st.sidebar.subheader('Anime dengan Rating Tertinggi:')
+st.sidebar.write(top_rated_anime[['Title', 'rating']])
+
 # Load data
 file_path = 'Data_Cleaned.csv'
 data = load_data(file_path)
