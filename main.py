@@ -121,15 +121,18 @@ st.sidebar.header('Anime dengan Rating Tertinggi')
 highest_rated_anime = df[df['rating'] == df['rating'].max()]
 
 # Tampilkan judul dan deskripsi anime dengan rating tertinggi di sidebar
+# Tampilkan judul anime dengan rating tertinggi di sidebar
 if not highest_rated_anime.empty:
     for index, row in highest_rated_anime.iterrows():
-        if 'judul' in row and 'deskripsi' in row:
+        if 'judul' in row:
             st.sidebar.subheader(row['judul'])
-            st.sidebar.write(row['deskripsi'])
+            if 'deskripsi' in row:
+                st.sidebar.write(row['deskripsi'])
         else:
             st.sidebar.write("Data tidak lengkap untuk anime dengan rating tertinggi.")
 else:
     st.sidebar.write('Tidak ada data untuk anime dengan rating tertinggi.')
+
 
 
 
