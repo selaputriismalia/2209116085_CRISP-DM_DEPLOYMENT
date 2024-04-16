@@ -114,39 +114,69 @@ n_clusters = st.sidebar.slider('Jumlah Cluster', min_value=2, max_value=10, valu
 
 
 
-# Sidebar untuk menampilkan anime dengan rating tertinggi
-st.sidebar.header('Rating Tertinggi')
+st.sidebar.header('Pilihan Tampilan')
+jumlah_tampilan = st.sidebar.selectbox('Jumlah Anime:', [5, 10, 15])
 
-# Ambil anime dengan rating tertinggi
-highest_rated_anime = df[df['rating'] == df['rating'].max()]
+st.subheader('Anime dengan Rating Tertinggi')
+highest_rated_anime = df.nlargest(jumlah_tampilan, 'rating')
 
 if not highest_rated_anime.empty:
     for index, row in highest_rated_anime.iterrows():
         if 'anime_id' in row:
-            st.sidebar.subheader(row['anime_id'])
+            st.write(f"Anime ID: {row['anime_id']}")
             if 'rating' in row:
-                st.sidebar.write(row['rating'])
+                st.write(f"Rating: {row['rating']}")
         else:
-            st.sidebar.write("Data tidak lengkap untuk anime dengan rating tertinggi.")
+            st.write("Data tidak lengkap untuk anime dengan rating tertinggi.")
 else:
-    st.sidebar.write('Tidak ada data untuk anime dengan rating tertinggi.')
+    st.write('Tidak ada data untuk anime dengan rating tertinggi.')
 
-
-st.sidebar.header('Rating Terendah')
-
-# Ambil anime dengan rating terendah
-lowest_rated_anime = df[df['rating'] == df['rating'].min()]
+st.subheader('Anime dengan Rating Terendah')
+lowest_rated_anime = df.nsmallest(jumlah_tampilan, 'rating')
 
 if not lowest_rated_anime.empty:
     for index, row in lowest_rated_anime.iterrows():
         if 'anime_id' in row:
-            st.sidebar.subheader(row['anime_id'])
+            st.write(f"Anime ID: {row['anime_id']}")
             if 'rating' in row:
-                st.sidebar.write(row['rating'])
+                st.write(f"Rating: {row['rating']}")
         else:
-            st.sidebar.write("Data tidak lengkap untuk anime dengan rating terendah.")
+            st.write("Data tidak lengkap untuk anime dengan rating terendah.")
 else:
-    st.sidebar.write('Tidak ada data untuk anime dengan rating terendah.')
+    st.write('Tidak ada data untuk anime dengan rating terendah.')
+# # Sidebar untuk menampilkan anime dengan rating tertinggi
+# st.sidebar.header('Rating Tertinggi')
+
+# # Ambil anime dengan rating tertinggi
+# highest_rated_anime = df[df['rating'] == df['rating'].max()]
+
+# if not highest_rated_anime.empty:
+#     for index, row in highest_rated_anime.iterrows():
+#         if 'anime_id' in row:
+#             st.sidebar.subheader(row['anime_id'])
+#             if 'rating' in row:
+#                 st.sidebar.write(row['rating'])
+#         else:
+#             st.sidebar.write("Data tidak lengkap untuk anime dengan rating tertinggi.")
+# else:
+#     st.sidebar.write('Tidak ada data untuk anime dengan rating tertinggi.')
+
+
+# st.sidebar.header('Rating Terendah')
+
+# # Ambil anime dengan rating terendah
+# lowest_rated_anime = df[df['rating'] == df['rating'].min()]
+
+# if not lowest_rated_anime.empty:
+#     for index, row in lowest_rated_anime.iterrows():
+#         if 'anime_id' in row:
+#             st.sidebar.subheader(row['anime_id'])
+#             if 'rating' in row:
+#                 st.sidebar.write(row['rating'])
+#         else:
+#             st.sidebar.write("Data tidak lengkap untuk anime dengan rating terendah.")
+# else:
+#     st.sidebar.write('Tidak ada data untuk anime dengan rating terendah.')
 
 
 # Load data
