@@ -132,7 +132,21 @@ else:
     st.sidebar.write('Tidak ada data untuk anime dengan rating tertinggi.')
 
 
+st.sidebar.header('Rating Terendah')
 
+# Ambil anime dengan rating terendah
+lowest_rated_anime = df[df['rating'] == df['rating'].min()]
+
+if not lowest_rated_anime.empty:
+    for index, row in lowest_rated_anime.iterrows():
+        if 'anime_id' in row:
+            st.sidebar.subheader(row['anime_id'])
+            if 'rating' in row:
+                st.sidebar.write(row['rating'])
+        else:
+            st.sidebar.write("Data tidak lengkap untuk anime dengan rating terendah.")
+else:
+    st.sidebar.write('Tidak ada data untuk anime dengan rating terendah.')
 
 
 # Load data
