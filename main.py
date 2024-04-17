@@ -37,7 +37,7 @@ with col1:
 
 with col2:
   st.empty()
-  fig, ax = plt.subplots(figsize=(25, 20))
+  fig, ax = plt.subplots(figsize=(25, 26))
   sns.histplot(df['rating'], bins=20, kde=True, color='blue', ax=ax)
   ax.set_title('Distribusi Rating Anime')
   ax.set_xlabel('Rating')
