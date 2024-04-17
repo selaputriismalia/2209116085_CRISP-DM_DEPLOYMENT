@@ -36,7 +36,7 @@ with col2:
     st.write(rating_counts_rounded)
 
 with col1:
-  fig, ax = plt.subplots(figsize=(10, 6))
+  fig, ax = plt.subplots(figsize=(14, 8))
   sns.histplot(df['rating'], bins=20, kde=True, color='blue', ax=ax)
   ax.set_title('Distribusi Rating Anime')
   ax.set_xlabel('Rating')
