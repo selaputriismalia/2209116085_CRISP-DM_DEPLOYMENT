@@ -21,7 +21,7 @@ st.subheader('Distribusi Rating Anime')
 # Menggunakan layout kolom untuk menempatkan teks dan visualisasi berdampingan
 col1, col2 = st.columns([1, 2])  # Kolom 1 untuk teks, kolom 2 untuk visualisasi
 
-with col1:
+with col2:
     rating_counts = df['rating'].value_counts().sort_index()
     total_ratings = rating_counts.sum()
 
@@ -35,8 +35,8 @@ with col1:
     st.write("Distribusi Rating:")
     st.write(rating_counts_rounded)
 
-with col2:
-    fig, ax = plt.subplots(figsize=(10, 6))
+with col1:
+    fig, ax = plt.subplots(figsize=(15, 10))
     sns.histplot(df['rating'], bins=20, kde=True, color='blue', ax=ax)
     ax.set_title('Distribusi Rating Anime')
     ax.set_xlabel('Rating')
