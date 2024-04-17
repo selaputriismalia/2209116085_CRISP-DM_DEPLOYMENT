@@ -116,21 +116,6 @@ n_clusters = st.sidebar.slider('Jumlah Cluster', min_value=2, max_value=10, valu
 st.sidebar.header('Pilihan Tampilan')
 jumlah_tampilan = st.sidebar.selectbox('Jumlah Anime:', [5, 10, 15])
 
-st.subheader('Anime dengan Rating Tertinggi')
-highest_rated_anime = df.nlargest(jumlah_tampilan, 'rating')[['anime_id', 'rating']]
-
-if not highest_rated_anime.empty:
-    st.table(highest_rated_anime)
-else:
-    st.write('Tidak ada data untuk anime dengan rating tertinggi.')
-
-st.subheader('Anime dengan Rating Terendah')
-lowest_rated_anime = df.nsmallest(jumlah_tampilan, 'rating')[['anime_id', 'rating']]
-
-if not lowest_rated_anime.empty:
-    st.table(lowest_rated_anime)
-else:
-    st.write('Tidak ada data untuk anime dengan rating terendah.')
 
 # Load data
 file_path = 'Data_Cleaned.csv'
@@ -156,3 +141,20 @@ plt.title('Visualisasi Kluster')
 plt.legend()
 
 st.pyplot(plt.gcf())
+
+st.subheader('Anime dengan Rating Tertinggi')
+highest_rated_anime = df.nlargest(jumlah_tampilan, 'rating')[['anime_id', 'rating']]
+
+if not highest_rated_anime.empty:
+    st.table(highest_rated_anime)
+else:
+    st.write('Tidak ada data untuk anime dengan rating tertinggi.')
+
+st.subheader('Anime dengan Rating Terendah')
+lowest_rated_anime = df.nsmallest(jumlah_tampilan, 'rating')[['anime_id', 'rating']]
+
+if not lowest_rated_anime.empty:
+    st.table(lowest_rated_anime)
+else:
+    st.write('Tidak ada data untuk anime dengan rating terendah.')
+
