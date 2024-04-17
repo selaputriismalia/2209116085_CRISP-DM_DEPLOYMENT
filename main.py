@@ -16,27 +16,32 @@ df = pd.read_csv(url)
 st.subheader("Dataset")
 st.write(df.head())
 
-st.sidebar.subheader('Distribusi Rating Anime')
+st.subheader('Distribusi Rating Anime')
 
-fig, ax = plt.subplots(figsize=(10, 6))
-sns.histplot(df['rating'], bins=20, kde=True, color='blue', ax=ax)
-ax.set_title('Distribusi Rating Anime')
-ax.set_xlabel('Rating')
-ax.set_ylabel('Frekuensi')
-st.pyplot(fig)
+# Menggunakan layout kolom untuk menempatkan teks dan visualisasi berdampingan
+col1, col2 = st.columns([1, 2])  # Kolom 1 untuk teks, kolom 2 untuk visualisasi
 
-rating_counts = df['rating'].value_counts().sort_index()
-total_ratings = rating_counts.sum()
+with col1:
+    rating_counts = df['rating'].value_counts().sort_index()
+    total_ratings = rating_counts.sum()
 
-# Round the count values
-rating_counts_rounded = rating_counts.round().astype(int)
+    # Round the count values
+    rating_counts_rounded = rating_counts.round().astype(int)
 
-# Calculate percentage of rating distribution
-rating_percentages = (rating_counts / total_ratings) * 100
+    # Calculate percentage of rating distribution
+    rating_percentages = (rating_counts / total_ratings) * 100
 
-# Display rating distribution and rounded counts
-st.sidebar.write("Distribusi Rating:")
-st.sidebar.write(rating_counts_rounded)
+    # Display rating distribution and rounded counts
+    st.write("Distribusi Rating:")
+    st.write(rating_counts_rounded)
+
+with col2:
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.histplot(df['rating'], bins=20, kde=True, color='blue', ax=ax)
+    ax.set_title('Distribusi Rating Anime')
+    ax.set_xlabel('Rating')
+    ax.set_ylabel('Frekuensi')
+    st.pyplot(fig)
 
 st.write('Distribusi rating anime menunjukkan kecenderungan mayoritas anime menerima penilaian yang positif dari penonton, dengan puncak frekuensi terjadi pada kisaran rating antara 7.4 hingga 7.6. Hal ini mengindikasikan bahwa sebagian besar anime mendapat sambutan yang baik di kalangan komunitas penggemar. Namun, terdapat variasi dalam kualitas dan penerimaan anime, dengan beberapa anime mendapatkan rating sangat tinggi atau rendah.')
 st.write("Produsen anime dapat menggunakan wawasan ini untuk memahami preferensi dan harapan penonton, serta untuk merencanakan produksi anime yang lebih sesuai dengan selera pasar. Dengan memperhatikan faktor-faktor yang berkontribusi terhadap rating yang tinggi, seperti genre, plot, karakter, dan kualitas animasi, produsen anime dapat mengoptimalkan strategi produksi mereka untuk menciptakan konten yang lebih menarik dan memuaskan bagi penonton. Selain itu, mereka juga dapat menggunakan informasi ini untuk merancang kampanye promosi yang lebih efektif dan menjangkau audiens yang lebih luas, sehingga meningkatkan kesadaran dan penerimaan terhadap anime baru yang akan mereka produksi.")
