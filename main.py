@@ -143,7 +143,7 @@ plt.legend()
 st.pyplot(plt.gcf())
 
 st.subheader('Anime dengan Rating Tertinggi')
-highest_rated_anime = df.nlargest(jumlah_tampilan, 'rating')[['anime_id', 'rating']]
+highest_rated_anime = df.nlargest(jumlah_tampilan, 'rating')[['genre', 'rating']]
 
 if not highest_rated_anime.empty:
     st.table(highest_rated_anime)
@@ -151,7 +151,7 @@ else:
     st.write('Tidak ada data untuk anime dengan rating tertinggi.')
 
 st.subheader('Anime dengan Rating Terendah')
-lowest_rated_anime = df.nsmallest(jumlah_tampilan, 'rating')[['anime_id', 'rating']]
+lowest_rated_anime = df.nsmallest(jumlah_tampilan, 'rating')[['genre', 'rating']]
 
 if not lowest_rated_anime.empty:
     st.table(lowest_rated_anime)
