@@ -16,7 +16,8 @@ df = pd.read_csv(url)
 st.subheader("Dataset")
 st.write(df.head())
 
-st.subheader('Distribusi Rating Anime')
+st.sidebar.subheader('Distribusi Rating Anime')
+
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.histplot(df['rating'], bins=20, kde=True, color='blue', ax=ax)
 ax.set_title('Distribusi Rating Anime')
@@ -34,8 +35,8 @@ rating_counts_rounded = rating_counts.round().astype(int)
 rating_percentages = (rating_counts / total_ratings) * 100
 
 # Display rating distribution and rounded counts
-st.write("Distribusi Rating:")
-st.write(rating_counts_rounded)
+st.sidebar.write("Distribusi Rating:")
+st.sidebar.write(rating_counts_rounded)
 
 st.write('Distribusi rating anime menunjukkan kecenderungan mayoritas anime menerima penilaian yang positif dari penonton, dengan puncak frekuensi terjadi pada kisaran rating antara 7.4 hingga 7.6. Hal ini mengindikasikan bahwa sebagian besar anime mendapat sambutan yang baik di kalangan komunitas penggemar. Namun, terdapat variasi dalam kualitas dan penerimaan anime, dengan beberapa anime mendapatkan rating sangat tinggi atau rendah.')
 st.write("Produsen anime dapat menggunakan wawasan ini untuk memahami preferensi dan harapan penonton, serta untuk merencanakan produksi anime yang lebih sesuai dengan selera pasar. Dengan memperhatikan faktor-faktor yang berkontribusi terhadap rating yang tinggi, seperti genre, plot, karakter, dan kualitas animasi, produsen anime dapat mengoptimalkan strategi produksi mereka untuk menciptakan konten yang lebih menarik dan memuaskan bagi penonton. Selain itu, mereka juga dapat menggunakan informasi ini untuk merancang kampanye promosi yang lebih efektif dan menjangkau audiens yang lebih luas, sehingga meningkatkan kesadaran dan penerimaan terhadap anime baru yang akan mereka produksi.")
