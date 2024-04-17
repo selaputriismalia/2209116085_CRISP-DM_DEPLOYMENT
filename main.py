@@ -37,11 +37,11 @@ with col2:
 
 with col1:
   fig, ax = plt.subplots(figsize=(10, 6))
-sns.histplot(df['rating'], bins=20, kde=True, color='blue', ax=ax)
-ax.set_title('Distribusi Rating Anime')
-ax.set_xlabel('Rating')
-ax.set_ylabel('Frekuensi')
-st.pyplot(fig)
+  sns.histplot(df['rating'], bins=20, kde=True, color='blue', ax=ax)
+  ax.set_title('Distribusi Rating Anime')
+  ax.set_xlabel('Rating')
+  ax.set_ylabel('Frekuensi')
+  st.pyplot(fig)
 
 
 st.write('Distribusi rating anime menunjukkan kecenderungan mayoritas anime menerima penilaian yang positif dari penonton, dengan puncak frekuensi terjadi pada kisaran rating antara 7.4 hingga 7.6. Hal ini mengindikasikan bahwa sebagian besar anime mendapat sambutan yang baik di kalangan komunitas penggemar. Namun, terdapat variasi dalam kualitas dan penerimaan anime, dengan beberapa anime mendapatkan rating sangat tinggi atau rendah.')
